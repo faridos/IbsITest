@@ -2,6 +2,9 @@ user:
     resource: "@UserBundle/Controller/"
     type:     annotation
     prefix:   /
+
+
+
 avanzu_admin:
     resource: "@AvanzuAdminThemeBundle/Resources/config/routes.yml"
 

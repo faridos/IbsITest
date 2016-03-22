@@ -1,0 +1,77 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_content %}
+
+    <div class="row">
+        <div class="col-md-4">
+
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-solid box-primary">
+                {{ macro.box_header('List Questionnaires', true, false, 'primary') }}
+                <div class="box-body">
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>Langage</th>
+                                <th>type</th>
+                                <th>name</th>
+                            </tr>
+
+                        </table>
+                    </div><!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-solid box-primary">
+                {{ macro.box_header('List Questions', true, false, 'primary') }}
+                <div class="box-body">
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>questionnaire</th>
+                                <th>mode</th>
+                                <th>questionText</th>
+                            </tr>
+
+                        </table>
+                    </div><!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-solid box-primary">
+                {{ macro.box_header('List Reponses', true, false, 'primary') }}
+                <div class="box-body">
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>question</th>
+                                <th>content</th>
+                                <th>attachement</th>
+                            </tr>
+
+
+                        </table>
+                    </div><!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block page_title %} Lists {% endblock %}
+{% block page_subtitle %} of All {% endblock %}

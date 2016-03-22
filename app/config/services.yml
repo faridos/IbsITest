@@ -2,6 +2,7 @@
 parameters:
 #    parameter_name: value
     app_bundle.menu_listener.class: AppBundle\EventListener\SidebarSetupMenuListener
+    app_bundle.show_user_listener.class: AppBundle\EventListener\MyShowUserListener
 services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName

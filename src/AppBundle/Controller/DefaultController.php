@@ -5,16 +5,16 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Avanzu\AdminThemeBundle\Form\FormDemoModelType;
 use Avanzu\AdminThemeBundle\Controller\DefaultController as AdminController ;
 class DefaultController extends AdminController
 {
 
-
-
     /**
-     * @Route("/demo-admin/login/", name="avanzu_admin_login_demo")
+     * @Route("/questions/liste", name="app_quest_listing")
      */
-    public function loginAction() {
-        return $this->render('UserBundle:Security:login.html.twig');
+    public function listingAction() {
+        $form =$this->createForm( FormDemoModelType::class );
+        return $this->render('AppBundle:Default:listing.html.twig');
     }
 }
