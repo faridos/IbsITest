@@ -77,7 +77,21 @@ class Questionnaire
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Question"  , mappedBy="questionnaire")
+     * @ORM\JoinColumn(name="questions", referencedColumnName="id", nullable=true)
+     *
+     * @var ArrayCollection $questions
+     */
+    private $questions;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Langage" )
+     * @ORM\JoinColumn(name="langage_id", referencedColumnName="id", nullable=true)
+     *
+     * @var Langage $langage
+     */
+    private $langage;
     /**
      * Get id
      *
@@ -270,5 +284,68 @@ class Questionnaire
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add questions
+     *
+     * @param \AppBundle\Entity\Question $questions
+     * @return Questionnaire
+     */
+    public function addQuestion(\AppBundle\Entity\Question $questions)
+    {
+        $this->questions[] = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param \AppBundle\Entity\Question $questions
+     */
+    public function removeQuestion(\AppBundle\Entity\Question $questions)
+    {
+        $this->questions->removeElement($questions);
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+
+    /**
+     * Set langage
+     *
+     * @param \AppBundle\Entity\Langage $langage
+     * @return Questionnaire
+     */
+    public function setLangage(\AppBundle\Entity\Langage $langage = null)
+    {
+        $this->langage = $langage;
+
+        return $this;
+    }
+
+    /**
+     * Get langage
+     *
+     * @return \AppBundle\Entity\Langage 
+     */
+    public function getLangage()
+    {
+        return $this->langage;
     }
 }

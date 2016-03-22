@@ -35,7 +35,21 @@ class Reponse
      */
     private $attachement;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="reponses")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id", nullable=true)
+     *
+     * @var Question $question
+     */
+    private $question;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Calll", inversedBy="reponses")
+     * @ORM\JoinColumn(name="call_id", referencedColumnName="id", nullable=true)
+     *
+     * @var Calll $question
+     */
+    private $call;
     /**
      * Get id
      *
@@ -90,5 +104,51 @@ class Reponse
     public function getAttachement()
     {
         return $this->attachement;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \AppBundle\Entity\Question $question
+     * @return Reponse
+     */
+    public function setQuestion(\AppBundle\Entity\Question $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \AppBundle\Entity\Question 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Set call
+     *
+     * @param \AppBundle\Entity\Calll $call
+     * @return Reponse
+     */
+    public function setCall(\AppBundle\Entity\Calll $call = null)
+    {
+        $this->call = $call;
+
+        return $this;
+    }
+
+    /**
+     * Get call
+     *
+     * @return \AppBundle\Entity\Calll 
+     */
+    public function getCall()
+    {
+        return $this->call;
     }
 }

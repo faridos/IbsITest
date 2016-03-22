@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * conditionde
  *
  * @ORM\Table(name="conditionde")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\conditiondeRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ConditiondeRepository")
  */
 class conditionde
 {

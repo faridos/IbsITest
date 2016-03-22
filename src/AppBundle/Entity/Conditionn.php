@@ -7,15 +7,15 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * conditonn
  *
- * @ORM\Table(name="conditonn")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\conditonnRepository")
+ * @ORM\Table(name="condition")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ConditionnRepository")
  */
-class conditonn
+class Conditionn
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="conditionId", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,7 +24,7 @@ class conditonn
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     * @ORM\Column(name="desc", type="string", length=255, nullable=true)
      */
     private $description;
 

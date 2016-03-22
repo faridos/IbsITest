@@ -42,6 +42,13 @@ class Caller
      */
     private $mail;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Calll"  , mappedBy="caller")
+     * @ORM\JoinColumn(name="calls", referencedColumnName="id", nullable=true)
+     *
+     * @var ArrayCollection $calls
+     */
+    private $calls;
 
     /**
      * Get id
@@ -120,5 +127,45 @@ class Caller
     public function getMail()
     {
         return $this->mail;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->calls = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add calls
+     *
+     * @param \AppBundle\Entity\Calll $calls
+     * @return Caller
+     */
+    public function addCall(\AppBundle\Entity\Calll $calls)
+    {
+        $this->calls[] = $calls;
+
+        return $this;
+    }
+
+    /**
+     * Remove calls
+     *
+     * @param \AppBundle\Entity\Calll $calls
+     */
+    public function removeCall(\AppBundle\Entity\Calll $calls)
+    {
+        $this->calls->removeElement($calls);
+    }
+
+    /**
+     * Get calls
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCalls()
+    {
+        return $this->calls;
     }
 }

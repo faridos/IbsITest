@@ -70,7 +70,21 @@ class Calll
      */
     private $comment;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Reponse"  , mappedBy="call")
+     * @ORM\JoinColumn(name="reponses", referencedColumnName="id", nullable=true)
+     *
+     * @var ArrayCollection $reponses
+     */
+    private $reponses;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Caller", inversedBy="calls")
+     * @ORM\JoinColumn(name="caller_id", referencedColumnName="id", nullable=true)
+     *
+     * @var Caller $caller
+     */
+    private $caller;
     /**
      * Get id
      *
@@ -240,5 +254,68 @@ class Calll
     public function getComment()
     {
         return $this->comment;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reponses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add reponses
+     *
+     * @param \AppBundle\Entity\Reponse $reponses
+     * @return Calll
+     */
+    public function addReponse(\AppBundle\Entity\Reponse $reponses)
+    {
+        $this->reponses[] = $reponses;
+
+        return $this;
+    }
+
+    /**
+     * Remove reponses
+     *
+     * @param \AppBundle\Entity\Reponse $reponses
+     */
+    public function removeReponse(\AppBundle\Entity\Reponse $reponses)
+    {
+        $this->reponses->removeElement($reponses);
+    }
+
+    /**
+     * Get reponses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReponses()
+    {
+        return $this->reponses;
+    }
+
+    /**
+     * Set caller
+     *
+     * @param \AppBundle\Entity\Caller $caller
+     * @return Calll
+     */
+    public function setCaller(\AppBundle\Entity\Caller $caller = null)
+    {
+        $this->caller = $caller;
+
+        return $this;
+    }
+
+    /**
+     * Get caller
+     *
+     * @return \AppBundle\Entity\Caller 
+     */
+    public function getCaller()
+    {
+        return $this->caller;
     }
 }
