@@ -2,7 +2,6 @@
 parameters:
 #    parameter_name: value
     app_bundle.menu_listener.class: AppBundle\EventListener\SidebarSetupMenuListener
-
 services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
@@ -11,3 +10,7 @@ services:
         class: %app_bundle.menu_listener.class%
         tags:
             - { name: kernel.event_listener, event:theme.sidebar_setup_menu, method:onSetupMenu }
+    app_bundle.breadcrumb_listener:
+                class: %app_bundle.menu_listener.class%
+                tags:
+                    - { name: kernel.event_listener, event:theme.breadcrumb, method:onSetupMenu }
