@@ -1,0 +1,83 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+
+{% block title %}
+    Admin
+{% endblock %}
+{% block avanzu_admin_header %}
+    <header class="main-header">
+        {% block avanzu_logo %}
+            <a href="#" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                {{ block('title') }}
+            </a>
+        {% endblock %}
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                {% block avanzu_navbar %}
+                        {#<li id="btn_export" class="btn btn-danger" >#}
+                        {{ render(controller('AppBundle:Navbar:messages')) }}
+                        {{ render(controller('AppBundle:Navbar:notifications')) }}
+                        {{ render(controller('AppBundle:Navbar:tasks')) }}
+                        {{ render(controller('AppBundle:Navbar:user')) }}
+
+                    {% endblock %}
+                        {#</li>#}
+
+                        {#{% endblock %}#}
+                    </ul>
+                </div>
+            {% endif %}
+        </nav>
+    </header>
+{% endblock %}
+{% block page_title %}
+    Numerogeek Admin
+{% endblock %}
+{% block aside %}
+    <aside class="main-sidebar sidebar-offcanvas">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            {% block avanzu_sidebar %}
+
+                {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {{ render(controller('AppBundle:Sidebar:userPanel')) }}
+
+                    {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
+                {% endif %}
+                {{ render(controller('AppBundle:Sidebar:menu', {'request':app.request})) }}
+            {% endblock %}
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    {% endblock %}
+{% block page_subtitle %}
+
+{% endblock %}
+{% block avanzu_breadcrumb %}
+    {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
+{% endblock %}
+{% block page_content %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts_head %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts_inline %}
+    {{ parent() }}
+{% endblock %}

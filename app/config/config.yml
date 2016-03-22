@@ -36,7 +36,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-
+    globals:
+        admin_skin: skin-blue
+#        fos_csrf_provider: "@form.csrf_provider"
 # Doctrine Configuration
 doctrine:
     dbal:

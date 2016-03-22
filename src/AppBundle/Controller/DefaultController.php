@@ -5,17 +5,16 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
-class DefaultController extends Controller
+use Avanzu\AdminThemeBundle\Controller\DefaultController as AdminController ;
+class DefaultController extends AdminController
 {
+
+
+
     /**
-     * @Route("/", name="homepage")
+     * @Route("/demo-admin/login/", name="avanzu_admin_login_demo")
      */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+    public function loginAction() {
+        return $this->render('UserBundle:Security:login.html.twig');
     }
 }
