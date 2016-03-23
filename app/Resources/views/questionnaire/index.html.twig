@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Questionnaire list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Welcomemessage</th>
+                <th>Attachement</th>
+                <th>Isgenerated</th>
+                <th>Type</th>
+                <th>Confirmationsms</th>
+                <th>Finalmessage</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for questionnaire in questionnaires %}
+            <tr>
+                <td><a href="{{ path('questionnaire_show', { 'id': questionnaire.id }) }}">{{ questionnaire.id }}</a></td>
+                <td>{{ questionnaire.description }}</td>
+                <td>{{ questionnaire.welcomeMessage }}</td>
+                <td>{{ questionnaire.attachement }}</td>
+                <td>{% if questionnaire.isGenerated %}Yes{% else %}No{% endif %}</td>
+                <td>{{ questionnaire.type }}</td>
+                <td>{{ questionnaire.confirmationSms }}</td>
+                <td>{{ questionnaire.finalMessage }}</td>
+                <td>{{ questionnaire.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('questionnaire_show', { 'id': questionnaire.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('questionnaire_edit', { 'id': questionnaire.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('questionnaire_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

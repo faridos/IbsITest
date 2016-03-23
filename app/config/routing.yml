@@ -1,3 +1,15 @@
+app_reponse:
+    resource: "@AppBundle/Controller/ReponseController.php"
+    type:     annotation
+
+app_questionnaire:
+    resource: "@AppBundle/Controller/QuestionnaireController.php"
+    type:     annotation
+
+app_question:
+    resource: "@AppBundle/Controller/QuestionController.php"
+    type:     annotation
+
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation

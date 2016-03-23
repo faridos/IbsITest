@@ -23,9 +23,9 @@
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
-                                <th>Langage</th>
-                                <th>type</th>
-                                <th>name</th>
+                                <th>
+                                    <button class="btn-info">Ajouter </button></th>
+                                <th><button class="btn-warning">Lister </button></th></th>
                             </tr>
 
                         </table>
@@ -40,9 +40,9 @@
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
-                                <th>questionnaire</th>
-                                <th>mode</th>
-                                <th>questionText</th>
+                                <th>
+                                    <button class="btn-info">Ajouter </button></th>
+                                <th><button class="btn-warning">Lister </button></th></th>
                             </tr>
 
                         </table>
@@ -57,9 +57,9 @@
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
-                                <th>question</th>
-                                <th>content</th>
-                                <th>attachement</th>
+                                <th>
+                                    <button class="btn-info">Ajouter </button></th>
+                                <th><button class="btn-warning">Lister </button></th></th>
                             </tr>
 
 
@@ -68,6 +68,26 @@
                 </div>
             </div>
         </div>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="col-md-6">
+                <div class="box box-solid box-primary">
+                    {{ macro.box_header('List User (just for users with role = ROLE_ADMIN)', true, false, 'primary') }}
+                    <div class="box-body">
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>
+                                        <button class="btn-info">Ajouter </button></th>
+                                    <th><button class="btn-warning">Lister </button></th></th>
+                                </tr>
+
+
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+            {% endif %}
     </div>
 
 

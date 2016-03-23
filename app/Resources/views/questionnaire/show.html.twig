@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Questionnaire</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ questionnaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ questionnaire.description }}</td>
+            </tr>
+            <tr>
+                <th>Welcomemessage</th>
+                <td>{{ questionnaire.welcomeMessage }}</td>
+            </tr>
+            <tr>
+                <th>Attachement</th>
+                <td>{{ questionnaire.attachement }}</td>
+            </tr>
+            <tr>
+                <th>Isgenerated</th>
+                <td>{% if questionnaire.isGenerated %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ questionnaire.type }}</td>
+            </tr>
+            <tr>
+                <th>Confirmationsms</th>
+                <td>{{ questionnaire.confirmationSms }}</td>
+            </tr>
+            <tr>
+                <th>Finalmessage</th>
+                <td>{{ questionnaire.finalMessage }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ questionnaire.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('questionnaire_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('questionnaire_edit', { 'id': questionnaire.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
